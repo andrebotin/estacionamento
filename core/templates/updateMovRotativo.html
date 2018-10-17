@@ -1,0 +1,11 @@
+<h2>Update Movimento Rotativo: {{ movRotativo }}</h2>
+
+<form  action=" {% url 'mov-rot-update' movRotativo.id %} " method="POST">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+
+    <button type="submit">Atualizar</button>
+</form>
+
+<a href="{% url 'mov-rot-delete' movRotativo.id %}">Deletar</a>

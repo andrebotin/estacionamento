@@ -1,0 +1,11 @@
+<h2>Update Pessoa: {{ pessoa }}</h2>
+
+<form  action=" {% url 'pessoa-update' pessoa.id %} " method="POST">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+
+    <button type="submit">Atualizar</button>
+</form>
+
+<a href="{% url 'pessoa-delete' pessoa.id %}">Deletar</a>
