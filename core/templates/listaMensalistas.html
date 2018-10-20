@@ -1,18 +1,64 @@
-<h2>Lista Mensalistas</h2>
-
-<ul>
-    {% for mensalista in mensalistas %}
-        <li>  
-            <a href=" {% url 'mensalista-update' mensalista.id %} "> {{ mensalista.veiculo }} - {{ mensalista.inicio }} </a>
-        </li>
-    {% endfor %}
-</ul>
+{% extends "base.html" %}
+{% load bootstrap %}
 
 
-<form  action=" {% url 'mensalista-novo' %} " method="POST">
-    {% csrf_token %}
-        
-    {{ form.as_p }}
+{% block main %}
+
+<div class="row">
+
+    <div class="col-sm-12">
+        <h2>Lista Mensalistas</h2>
+    </div>
+
+</div>
     
-    <button type="submit">Cadastrar</button>
-</form>
+
+<div class="row">
+
+    <div class="col-sm-6">
+
+        <form  action=" {% url 'mensalista-novo' %} " method="POST">
+            {% csrf_token %}
+                
+            {{ form|bootstrap }}
+            
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+
+    </div>
+
+    <div class="col-sm-6">
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Mensalista</th>
+                    <th scope="col">Data Início</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for mensalista in mensalistas %}
+                    <tr>
+                        <th scope="row"><a href=" {% url 'mensalista-update' mensalista.id %} "> {{ mensalista.id }} </a></th>
+                        <td><a href=" {% url 'mensalista-update' mensalista.id %} "> {{ mensalista.veiculo }} </a></td>
+                        <td><a href=" {% url 'mensalista-update' mensalista.id %} "> {{ mensalista.inicio }} </a></td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>  
+
+
+
+    
+
+
+
+
+{% endblock %}

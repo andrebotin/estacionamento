@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import (
     home, 
     listaPessoas, 
@@ -25,7 +26,7 @@ from .views import (
 
 
 urlpatterns = [
-    path('', home),
+    path('', home, name='home'),
 
     path('pessoas/', listaPessoas, name='pessoas'),
     path('pessoa-novo/', pessoaNovo, name='pessoa-novo'),
@@ -51,4 +52,5 @@ urlpatterns = [
     path('mov-mensal-novo/', movMensalNovo, name='mov-mensal-novo'),
     path('mov-mensal-update/<int:id>', movMensalUpdate, name='mov-mensal-update'),
     path('mov-mensal-delete/<int:id>', movMensalDelete, name='mov-mensal-delete'),
+
 ]
